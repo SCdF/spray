@@ -87,7 +87,7 @@ object StatusCodes extends ObjectRegistry[Int, StatusCode] {
     else if (500 to 599 contains intValue) ServerError(intValue)(reason, defaultMessage)
     else sys.error("Can't register status code in non-standard region without additional information")
   )
-  
+
   import Informational.{apply => i}
   import Success      .{apply => s}
   import Redirection  .{apply => r}
@@ -99,7 +99,7 @@ object StatusCodes extends ObjectRegistry[Int, StatusCode] {
   val Continue           = reg(i(100)("Continue", "The server has received the request headers, and the client should proceed to send the request body."))
   val SwitchingProtocols = reg(i(101)("Switching Protocols", "The server is switching protocols, because the client requested the switch."))
   val Processing         = reg(i(102)("Processing", "The server is processing the request, but no response is available yet."))
-                                     
+
   val OK                          = reg(s(200)("OK", "OK"))
   val Created                     = reg(s(201)("Created", "The request has been fulfilled and resulted in a new resource being created."))
   val Accepted                    = reg(s(202)("Accepted", "The request has been accepted for processing, but the processing has not been completed."))
@@ -138,7 +138,7 @@ object StatusCodes extends ObjectRegistry[Int, StatusCode] {
   val UnsupportedMediaType         = reg(c(415)("Unsupported Media Type", "The request entity has a media type which the server or resource does not support."))
   val RequestedRangeNotSatisfiable = reg(c(416)("Requested Range Not Satisfiable", "The client has asked for a portion of the file, but the server cannot supply that portion."))
   val ExpectationFailed            = reg(c(417)("Expectation Failed", "The server cannot meet the requirements of the Expect request-header field."))
-  val ImATeapot                    = reg(c(418)("I'm a teapot", "The server is a teapot")
+  val ImATeapot                    = reg(c(418)("I'm a teapot", "The server is a teapot"))
   val EnhanceYourCalm              = reg(c(420)("Enhance Your Calm", "You are being rate-limited.")) // Twitter only
   val UnprocessableEntity          = reg(c(422)("Unprocessable Entity", "The request was well-formed but was unable to be followed due to semantic errors."))
   val Locked                       = reg(c(423)("Locked", "The resource that is being accessed is locked."))
